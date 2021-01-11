@@ -1,4 +1,4 @@
-package ca.badalsarkar.amazingshop.restcontroller;
+package ca.badalsarkar.amazingshop.restcontrollers;
 
 import ca.badalsarkar.amazingshop.models.Customer;
 import ca.badalsarkar.amazingshop.repositories.CustomerRepository;
