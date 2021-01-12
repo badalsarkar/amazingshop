@@ -1,7 +1,6 @@
 package ca.badalsarkar.amazingshop.assemblers;
 
-import ca.badalsarkar.amazingshop.models.Product;
-import ca.badalsarkar.amazingshop.repositories.ProductRepository;
+import ca.badalsarkar.amazingshop.models.product.Product;
 import ca.badalsarkar.amazingshop.restcontrollers.ProductController;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
