@@ -4,6 +4,10 @@ import ca.badalsarkar.amazingshop.assemblers.ProductAssembler;
 import ca.badalsarkar.amazingshop.exceptions.ProductNotFoundException;
 import ca.badalsarkar.amazingshop.models.product.Product;
 import ca.badalsarkar.amazingshop.repositories.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
@@ -17,13 +21,12 @@ import java.util.stream.Collectors;
 @RestController
 public class ProductController {
 
-    private final ProductRepository repository;
-    private final ProductAssembler assembler;
-
-    public ProductController(ProductRepository repository, ProductAssembler assembler) {
-        this.repository = repository;
-        this.assembler = assembler;
-    }
+    @Autowired
+    private PagedResourcesAssembler<Product> productPagedResourcesAssembler;
+    @Autowired
+    private ProductRepository repository;
+    @Autowired
+    private ProductAssembler assembler;
 
     @PostMapping("/products")
     public ResponseEntity newProduct(@RequestBody Product newProduct){
@@ -31,12 +34,11 @@ public class ProductController {
         return ResponseEntity.created(product.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(product);
     }
 
+    // Returns a page containing 20 products
     @GetMapping("/products")
-    public ResponseEntity all(){
-        List<EntityModel<Product>> products = repository.findAll()
-                .stream().map(assembler::toModel).collect(Collectors.toList());
-        return ResponseEntity.ok()
-                .body(CollectionModel.of(products, linkTo(methodOn(ProductController.class).all()).withSelfRel()));
+    public ResponseEntity all(Pageable pageable){
+        Page<Product> productPage=repository.findAll(pageable);
+        return ResponseEntity.ok().body(productPagedResourcesAssembler.toModel(productPage,assembler));
     }
 
     @GetMapping("/products/{id}")

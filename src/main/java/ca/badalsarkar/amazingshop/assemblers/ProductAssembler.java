@@ -2,6 +2,7 @@ package ca.badalsarkar.amazingshop.assemblers;
 
 import ca.badalsarkar.amazingshop.models.product.Product;
 import ca.badalsarkar.amazingshop.restcontrollers.ProductController;
+import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,6 @@ public class ProductAssembler implements RepresentationModelAssembler<Product, E
     public EntityModel<Product> toModel(Product product) {
         return EntityModel.of(product,
                 linkTo(methodOn(ProductController.class).one(product.getId())).withSelfRel(),
-                linkTo(methodOn(ProductController.class).all()).withRel("products"));
+                linkTo(methodOn(ProductController.class).all(Pageable.unpaged())).withRel("products"));
     }
 }
