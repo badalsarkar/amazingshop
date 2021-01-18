@@ -1,0 +1,44 @@
+@startuml
+' hide the spot
+hide circle
+
+' avoid problems with angled crows feet
+skinparam inetype ortho
+
+entity Product {
+    *id: Long <<Generated>>
+    --
+    name: VARCHAR
+    sku: VARCHAR
+    *vendor_id: Long <<FK>>
+    *product_department_id: short <<FK>>
+    *category_id: int <<FK>>
+    topfeatures: BLOB
+    selling_price: Decimal
+    list_price: Decimal
+    rating: float
+    ranking: int
+    
+}
+
+entity ProductBrand {
+    *id: Long <<Generated>>
+    --
+    name: VARCHAR(255)
+    description: BLOB
+    logo: URL
+    website: URL
+}
+
+entity ProductCategory {
+    *id: Int <<Generated>>
+    --
+    name: VARCHAR
+    description: VARCHAR
+    parent_code: int
+}
+
+
+@enduml
+
+
