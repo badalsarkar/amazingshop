@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+actor Customer
+actor ShippingSystem
+
+package OrderSystem {
+    Customer --> (Add product to cart)
+    Customer --> (Remove product from cart)
+    Customer --> (Empty cart)
+    Customer --> (Review cart)
+    Customer --> (Confirm cart)
+
+    Customer --> (Add/update/confirm payment details)
+    Customer --> (Enter/Confirm shipping info)
+    Customer --> (Make payment)
+    (Make payment) .> (Send confirmation email) : include
+
+    Customer --> (View order status)
+    Customer --> (Cancel order)
+    (Cancel order) .> (Send confirmation email) : include
+    Customer --> (View invoice)
+    Customer --> (Return product)
+    (Return product) .> (Send confirmation email) : include
+    ShippingSystem --> (Update order status)
+    (Update order status) .> (Send confirmation email) : include
+    
+}
+@enduml

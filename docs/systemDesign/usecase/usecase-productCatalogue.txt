@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+actor Customer
+actor Admin
+
+package ProductCatalogue {
+    Customer --> (View products)
+    Customer --> (Search for product)
+    Customer --> (Filter products)
+    Customer --> (Add/remove products to favorite)
+    Customer --> (View product reviews)
+    Admin --> (Add new product)
+    Admin --> (Remove product)
+    Admin --> (Update product)
+    Admin --> (Add/update product promotion)
+}
+
+package Inventory {
+    Admin --> (Check product inventory)
+    Admin --> (Increase inventory)
+}
+@enduml

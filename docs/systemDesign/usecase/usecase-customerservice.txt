@@ -1,0 +1,14 @@
+@startuml
+left to right direction
+actor Customer
+
+package CustomerService {
+    Customer --> (Register as new customer)
+    (Register as new customer) .> (Send confirmation email) : include 
+    Customer --> (Update profile) 
+    (Update profile) .> (Send confirmation email) : include 
+    Customer --> (Delete account) 
+    (Delete account) .> (Send confirmation email) : include
+    Customer --> (Login)
+}
+@enduml

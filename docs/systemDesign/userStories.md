@@ -34,7 +34,7 @@ None
 
 None
 
-## 2. Select products
+## 2. Fill Cart with Products
 
 ### 2.1
 
