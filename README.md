@@ -16,7 +16,7 @@ information entered will not be persisted.
 
 ## System Design Document
 
-Design documents are [here](./docs/systemDesign.md)
+Design documents are [here](./docs/README.md)
 
 ## License
 
