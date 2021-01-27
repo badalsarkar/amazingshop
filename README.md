@@ -14,6 +14,10 @@ information entered will not be persisted.
 - [PostgreSQL](https://www.postgresql.org/) - Database
 - [Maven](https://maven.apache.org/) - Build tool and dependency management
 
+## System Design Document
+
+Design documents are [here](./docs/systemDesign.md)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE) file for details
