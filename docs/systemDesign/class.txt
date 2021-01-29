@@ -1,17 +1,33 @@
 @startuml
 class Department {
-    id
-    name
+    Short id
+    String name
+    Set<Category> categories
+    List<Product> products
+    addCategory(Parameters...)
+    addProduct(Parameters...)
 }
 class Category {
-    id
-    name
+    Integer id
+    String name
+    Department department
+    Set<Product> products
 }
 class Product {
-    id
-    name
-    price
-    inventory
+    Long id
+    String name
+    Price listPrice
+    Price currentPrice
+    String featuredImage
+    List<String> images
+    Long qtyInStock
+    List<ProductReview> productReview
+    ProductRating productRating= new ProductRating
+    Set<Category> productCategory
+    Supplier supplier
+    addProductReview(Parameters...)
+    addRating(Parameters...)
+    getRating():
 }
 
 class Cart {
@@ -64,9 +80,9 @@ class ProductRating {
     number of rating
 }
 class Supplier {
-    id
-    name
-    address
+    Integer id
+    String name
+    Address address
 }
 class Promotion {
     name
@@ -95,11 +111,12 @@ class RegistrationService {
 }
 
 Department "1" *-- "0..many" Category
-Product "0..*" -- "1" Category
+Department "1  " *-- "0..*" Product
+Product "0..*" -- "1..*" Category
 Product *-- "0..*" ProductReview : contains >
 Product *-- "0..*" ProductRating : contains >
 Promotion "0..1*" -- "1..*" Product : applies to
-Supplier "1 " <--> "0..*" Product 
+Supplier "1 " <-- "0..*" Product
 Confirmation <|-- RegistrationService : Implements
 RegistrationService -- Customer : Used by >
 Customer *-- "1" Cart
