@@ -1,6 +1,5 @@
 package ca.badalsarkar.amazingshop.models.product;
 
-import ca.badalsarkar.amazingshop.models.ProductBrand;
 import ca.badalsarkar.amazingshop.utilities.Money;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -42,16 +41,22 @@ public class Product {
     @ManyToOne
     private ProductBrand brand;
     @ManyToOne
+    private Department department;
+    @ManyToOne
     private Category category;
+
     @Embedded
     @Column(nullable = false)
     private Money currentPrice;
+
     @Embedded
     @Column(nullable = false)
     private Money listPrice;
     private float rating;
+
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> topFeatures;
+
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> images;
 

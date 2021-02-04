@@ -1,6 +1,5 @@
-package ca.badalsarkar.amazingshop.models;
+package ca.badalsarkar.amazingshop.models.product;
 
-import ca.badalsarkar.amazingshop.models.product.Product;
 import ca.badalsarkar.amazingshop.utilities.Address;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
