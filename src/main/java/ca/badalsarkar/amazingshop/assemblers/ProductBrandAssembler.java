@@ -1,6 +1,6 @@
 package ca.badalsarkar.amazingshop.assemblers;
 
-import ca.badalsarkar.amazingshop.models.ProductBrand;
+import ca.badalsarkar.amazingshop.models.product.ProductBrand;
 import ca.badalsarkar.amazingshop.restcontrollers.ProductBrandController;
 import ca.badalsarkar.amazingshop.restcontrollers.ProductController;
 import org.springframework.hateoas.EntityModel;
